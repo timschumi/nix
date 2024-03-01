@@ -6,6 +6,8 @@
       ./hardware-configuration.nix
     ];
 
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
@@ -33,8 +35,6 @@
   services.openssh.enable = true;
 
   networking.firewall.enable = false;
-
-  system.copySystemConfiguration = true;
 
   system.stateVersion = "23.11";
 }
