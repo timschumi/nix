@@ -9,7 +9,7 @@
     nixosConfigurations.m600 = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
-        ./configuration.nix
+        ./m600-configuration.nix
       ];
     };
   };
