@@ -6,6 +6,9 @@
       ./d800-hardware-configuration.nix
     ];
 
+  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.require-sigs = false;
+
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/sda";
 
