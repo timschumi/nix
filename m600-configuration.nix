@@ -1,12 +1,14 @@
-{ config, lib, pkgs, ... }:
-
 {
-  imports =
-    [
-      ./m600-hardware-configuration.nix
-    ];
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
+  imports = [
+    ./m600-hardware-configuration.nix
+  ];
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
@@ -24,7 +26,7 @@
 
   users.users.tim = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ];
+    extraGroups = ["wheel"];
     packages = with pkgs; [
       git
       htop
@@ -38,4 +40,3 @@
 
   system.stateVersion = "23.11";
 }
-

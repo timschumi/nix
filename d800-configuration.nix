@@ -1,12 +1,14 @@
-{ config, lib, pkgs, ... }:
-
 {
-  imports =
-    [
-      ./d800-hardware-configuration.nix
-    ];
+  config,
+  lib,
+  pkgs,
+  ...
+}: {
+  imports = [
+    ./d800-hardware-configuration.nix
+  ];
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
   nix.settings.require-sigs = false;
 
   boot.loader.grub.enable = true;
@@ -24,7 +26,7 @@
 
   users.users.tim = {
     isNormalUser = true;
-    extraGroups = [ "wheel" ];
+    extraGroups = ["wheel"];
     packages = with pkgs; [
       curl
       tree
@@ -38,7 +40,4 @@
   networking.firewall.enable = false;
 
   system.stateVersion = "23.11";
-
 }
-
-
