@@ -7,6 +7,10 @@
   nix.settings.experimental-features = ["nix-command" "flakes"];
   nix.settings.require-sigs = false;
 
+  hardware.enableRedistributableFirmware = true;
+  hardware.cpu.amd.updateMicrocode = true;
+  hardware.cpu.intel.updateMicrocode = true;
+
   time.timeZone = "Europe/Berlin";
 
   i18n.defaultLocale = "de_DE.UTF-8";
