@@ -10,6 +10,14 @@
     nixpkgs,
     ...
   } @ inputs: {
+    nixosConfigurations.ah532 = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [
+        ./host/ah532.nix
+        ./variant/base.nix
+      ];
+    };
+
     nixosConfigurations.d800 = nixpkgs.lib.nixosSystem {
       system = "i686-linux";
       modules = [
