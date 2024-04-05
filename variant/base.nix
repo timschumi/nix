@@ -4,17 +4,8 @@
   pkgs,
   ...
 }: {
-  imports = [
-    ./m600-hardware-configuration.nix
-  ];
-
   nix.settings.experimental-features = ["nix-command" "flakes"];
-
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
-
-  networking.hostName = "m600";
-  networking.networkmanager.enable = true;
+  nix.settings.require-sigs = false;
 
   time.timeZone = "Europe/Berlin";
 
