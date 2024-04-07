@@ -26,6 +26,14 @@
       ];
     };
 
+    nixosConfigurations.d800jr = nixpkgs.lib.nixosSystem {
+      system = "i686-linux";
+      modules = [
+        ./host/d800jr.nix
+        ./variant/base.nix
+      ];
+    };
+
     nixosConfigurations.m600 = nixpkgs.lib.nixosSystem {
       system = "x86_64-linux";
       modules = [
