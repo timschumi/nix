@@ -42,6 +42,14 @@
       ];
     };
 
+    nixosConfigurations.p2520la = nixpkgs.lib.nixosSystem {
+      system = "x86_64-linux";
+      modules = [
+        ./host/p2520la.nix
+        ./variant/base.nix
+      ];
+    };
+
     formatter = {
       i686-linux = nixpkgs.legacyPackages.i686-linux.alejandra;
       x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
