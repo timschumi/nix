@@ -16,6 +16,7 @@
     "nomodeset"
     "forcepae"
     "processor.ignore_ppc=1"
+    "console=ttyS0,115200n8"
   ];
   boot.extraModulePackages = [];
 
