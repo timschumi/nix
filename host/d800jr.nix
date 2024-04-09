@@ -27,13 +27,10 @@
 
   swapDevices = [];
 
-  networking.useDHCP = lib.mkDefault true;
-
   nixpkgs.hostPlatform = lib.mkDefault "i686-linux";
 
   boot.loader.grub.enable = true;
   boot.loader.grub.device = "/dev/sda";
 
   networking.hostName = "d800jr";
-  networking.wireless.enable = true;
 }

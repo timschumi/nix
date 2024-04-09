@@ -14,7 +14,7 @@
       system = "x86_64-linux";
       modules = [
         ./host/ah532.nix
-        ./variant/base.nix
+        ./variant/desktop.nix
       ];
     };
 
@@ -22,7 +22,7 @@
       system = "i686-linux";
       modules = [
         ./host/d800.nix
-        ./variant/base.nix
+        ./variant/desktop.nix
       ];
     };
 
@@ -30,7 +30,7 @@
       system = "i686-linux";
       modules = [
         ./host/d800jr.nix
-        ./variant/base.nix
+        ./variant/desktop.nix
       ];
     };
 
@@ -38,7 +38,7 @@
       system = "x86_64-linux";
       modules = [
         ./host/m600.nix
-        ./variant/base.nix
+        ./variant/desktop.nix
       ];
     };
 
@@ -46,7 +46,7 @@
       system = "x86_64-linux";
       modules = [
         ./host/p2520la.nix
-        ./variant/base.nix
+        ./variant/desktop.nix
       ];
     };
 

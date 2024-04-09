@@ -26,13 +26,10 @@
 
   swapDevices = [];
 
-  networking.useDHCP = lib.mkDefault true;
-
   nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
 
   boot.loader.systemd-boot.enable = true;
   boot.loader.efi.canTouchEfiVariables = true;
 
   networking.hostName = "p2520la";
-  networking.networkmanager.enable = true;
 }

@@ -26,8 +26,6 @@
 
   swapDevices = [];
 
-  networking.useDHCP = lib.mkDefault true;
-
   nixpkgs.hostPlatform = lib.mkDefault "i686-linux";
   networking.enableIntel2200BGFirmware = true;
 
@@ -35,5 +33,4 @@
   boot.loader.grub.device = "/dev/sda";
 
   networking.hostName = "d800";
-  networking.wireless.enable = true;
 }
