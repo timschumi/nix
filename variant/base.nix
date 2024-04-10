@@ -31,6 +31,11 @@
 
   services.openssh.enable = true;
 
+  services.logind = {
+    lidSwitch = "ignore";
+    lidSwitchDocked = "ignore";
+  };
+
   networking.firewall.enable = false;
 
   system.stateVersion = "23.11";
