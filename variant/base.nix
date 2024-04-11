@@ -8,8 +8,8 @@
   nix.settings.require-sigs = false;
 
   hardware.enableRedistributableFirmware = true;
-  hardware.cpu.amd.updateMicrocode = true;
-  hardware.cpu.intel.updateMicrocode = true;
+  hardware.cpu.amd.updateMicrocode = builtins.elem pkgs.system ["i686-linux" "x86_64-linux"];
+  hardware.cpu.intel.updateMicrocode = builtins.elem pkgs.system ["i686-linux" "x86_64-linux"];
 
   time.timeZone = "Europe/Berlin";
 
