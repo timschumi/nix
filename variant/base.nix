@@ -36,7 +36,5 @@
     lidSwitchDocked = "ignore";
   };
 
-  networking.firewall.enable = false;
-
   system.stateVersion = "23.11";
 }
