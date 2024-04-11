@@ -12,4 +12,7 @@
       KbdInteractiveAuthentication = false;
     };
   };
+
+  virtualisation.docker.enable = true;
+  users.users.tim.extraGroups = ["docker"];
 }
