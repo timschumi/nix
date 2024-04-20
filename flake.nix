@@ -3,10 +3,12 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    flake-utils.url = "github:numtide/flake-utils";
   };
 
   outputs = {
     self,
+    flake-utils,
     nixpkgs,
     ...
   } @ inputs: {
@@ -49,11 +51,10 @@
         ./variant/desktop.nix
       ];
     };
-
-    formatter = {
-      i686-linux = nixpkgs.legacyPackages.i686-linux.alejandra;
-      x86_64-linux = nixpkgs.legacyPackages.x86_64-linux.alejandra;
-      aarch64-linux = nixpkgs.legacyPackages.aarch64-linux.alejandra;
-    };
-  };
+  }
+  // (flake-utils.lib.eachSystem flake-utils.lib.allSystems (system: let
+    pkgs = import nixpkgs {inherit system;};
+  in {
+    formatter = pkgs.alejandra;
+  }));
 }
