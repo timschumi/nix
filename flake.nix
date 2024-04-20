@@ -36,40 +36,40 @@
       nixosConfigurations.ah532 = mkNixosSystem {
         system = "x86_64-linux";
         modules = [
-          ./host/ah532.nix
-          ./variant/desktop.nix
+          ./modules/host-ah532.nix
+          ./modules/variant-desktop.nix
         ];
       };
 
       nixosConfigurations.d800 = mkNixosSystem {
         system = "i686-linux";
         modules = [
-          ./host/d800.nix
-          ./variant/desktop.nix
+          ./modules/host-d800.nix
+          ./modules/variant-desktop.nix
         ];
       };
 
       nixosConfigurations.d800jr = mkNixosSystem {
         system = "i686-linux";
         modules = [
-          ./host/d800jr.nix
-          ./variant/desktop.nix
+          ./modules/host-d800jr.nix
+          ./modules/variant-desktop.nix
         ];
       };
 
       nixosConfigurations.m600 = mkNixosSystem {
         system = "x86_64-linux";
         modules = [
-          ./host/m600.nix
-          ./variant/desktop.nix
+          ./modules/host-m600.nix
+          ./modules/variant-desktop.nix
         ];
       };
 
       nixosConfigurations.p2520la = mkNixosSystem {
         system = "x86_64-linux";
         modules = [
-          ./host/p2520la.nix
-          ./variant/desktop.nix
+          ./modules/host-p2520la.nix
+          ./modules/variant-desktop.nix
           ./modules/comma.nix
           ./modules/home.nix
           ./modules/plasma.nix

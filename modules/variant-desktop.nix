@@ -1,6 +1,6 @@
 {...}: {
   imports = [
-    ./base.nix
+    ./variant-base.nix
   ];
 
   networking.firewall.enable = false;
