@@ -1,5 +1,5 @@
 ip: {peers, ...} @ wireguardConfig: let
-  getHost = ip: builtins.elemAt (builtins.split "/" ip) 0;
+  getHost = ip: builtins.head (builtins.split "/" ip);
   ipHost = getHost ip;
   peerFilter = {allowedIPs, ...} @ peer: let
     allowedIPHosts = map getHost allowedIPs;
