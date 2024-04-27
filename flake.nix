@@ -50,6 +50,7 @@
         modules = [
           ./host/p2520la.nix
           ./variant/desktop.nix
+          ./modules/plasma.nix
         ];
       };
     }
