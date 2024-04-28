@@ -22,5 +22,11 @@
     programs.plasma.configFile."kxkbrc"."Layout"."LayoutList".value = "de";
     programs.plasma.configFile."kxkbrc"."Layout"."Use".value = true;
     programs.plasma.configFile."kxkbrc"."Layout"."VariantList".value = "nodeadkeys";
+
+    # TODO: Think about where to put these.
+    programs.firefox.enable = true;
+    home.packages = with pkgs; [
+      spotify
+    ];
   };
 }
