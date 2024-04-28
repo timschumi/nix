@@ -5,6 +5,9 @@
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
 
+    home-manager.url = "github:nix-community/home-manager";
+    home-manager.inputs.nixpkgs.follows = "nixpkgs";
+
     nix-index-database.url = "github:nix-community/nix-index-database";
     nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
   };
@@ -64,6 +67,7 @@
           ./host/p2520la.nix
           ./variant/desktop.nix
           ./modules/comma.nix
+          ./modules/home.nix
           ./modules/plasma.nix
           ./modules/pipewire.nix
         ];
