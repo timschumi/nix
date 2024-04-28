@@ -4,6 +4,9 @@
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
     flake-utils.url = "github:numtide/flake-utils";
+
+    nix-index-database.url = "github:nix-community/nix-index-database";
+    nix-index-database.inputs.nixpkgs.follows = "nixpkgs";
   };
 
   outputs = {
@@ -60,6 +63,7 @@
         modules = [
           ./host/p2520la.nix
           ./variant/desktop.nix
+          ./modules/comma.nix
           ./modules/plasma.nix
           ./modules/pipewire.nix
         ];
