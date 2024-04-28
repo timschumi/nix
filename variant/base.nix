@@ -23,7 +23,6 @@
     isNormalUser = true;
     extraGroups = ["wheel"];
     packages = with pkgs; [
-      git
       htop
     ];
     openssh.authorizedKeys.keys = [
