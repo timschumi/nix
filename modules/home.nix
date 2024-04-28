@@ -18,6 +18,15 @@
     programs.vim.enable = true;
     programs.vim.defaultEditor = true;
 
+    programs.git.enable = true;
+    programs.git.lfs.enable = true;
+    programs.git.userName = "Tim Schumacher";
+    programs.git.userEmail = "timschumi@gmx.de";
+    programs.git.aliases.c = "commit --verbose";
+    programs.git.aliases.ca = "c --amend";
+    programs.git.aliases.cad = "ca --date=now";
+    programs.git.aliases.graph = "log --oneline --graph";
+
     programs.home-manager.enable = true;
   };
 }
