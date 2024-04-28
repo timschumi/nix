@@ -11,9 +11,19 @@
     flake-utils,
     nixpkgs,
     ...
-  } @ inputs:
+  } @ inputs: let
+    mkNixosSystem = config:
+      nixpkgs.lib.nixosSystem (
+        config
+        // {
+          specialArgs = {
+            inherit inputs;
+          };
+        }
+      );
+  in
     {
-      nixosConfigurations.ah532 = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.ah532 = mkNixosSystem {
         system = "x86_64-linux";
         modules = [
           ./host/ah532.nix
@@ -21,7 +31,7 @@
         ];
       };
 
-      nixosConfigurations.d800 = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.d800 = mkNixosSystem {
         system = "i686-linux";
         modules = [
           ./host/d800.nix
@@ -29,7 +39,7 @@
         ];
       };
 
-      nixosConfigurations.d800jr = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.d800jr = mkNixosSystem {
         system = "i686-linux";
         modules = [
           ./host/d800jr.nix
@@ -37,7 +47,7 @@
         ];
       };
 
-      nixosConfigurations.m600 = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.m600 = mkNixosSystem {
         system = "x86_64-linux";
         modules = [
           ./host/m600.nix
@@ -45,7 +55,7 @@
         ];
       };
 
-      nixosConfigurations.p2520la = nixpkgs.lib.nixosSystem {
+      nixosConfigurations.p2520la = mkNixosSystem {
         system = "x86_64-linux";
         modules = [
           ./host/p2520la.nix
