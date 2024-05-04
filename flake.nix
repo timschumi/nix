@@ -21,62 +21,28 @@
     flake-utils,
     nixpkgs,
     ...
-  } @ inputs: let
-    mkNixosSystem = config:
-      nixpkgs.lib.nixosSystem (
-        config
-        // {
-          specialArgs = {
-            inherit inputs;
-          };
-        }
-      );
-  in
-    {
-      nixosConfigurations.ah532 = mkNixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          ./modules/host-ah532.nix
-          ./modules/variant-desktop.nix
-        ];
+  } @ inputs:
+    {}
+    # Load all nixos hosts and apply common settings.
+    // (let
+      hostsDir = ./hosts/nixos;
+      commonSettings = {
+        specialArgs = {
+          inherit inputs;
+        };
       };
-
-      nixosConfigurations.d800 = mkNixosSystem {
-        system = "i686-linux";
-        modules = [
-          ./modules/host-d800.nix
-          ./modules/variant-desktop.nix
-        ];
+      hostFiles = builtins.attrNames (nixpkgs.lib.attrsets.filterAttrs (path: type: type == "regular") (builtins.readDir hostsDir));
+      mergeSets = builtins.foldl' (acc: elem: acc // elem) {};
+      hostNameFromFile = nixpkgs.lib.strings.removeSuffix ".nix";
+      fileToConfiguration = file: {
+        "${hostNameFromFile file}" = nixpkgs.lib.nixosSystem (
+          (import (hostsDir + ("/" + file)) commonSettings.specialArgs) // commonSettings
+        );
       };
-
-      nixosConfigurations.d800jr = mkNixosSystem {
-        system = "i686-linux";
-        modules = [
-          ./modules/host-d800jr.nix
-          ./modules/variant-desktop.nix
-        ];
-      };
-
-      nixosConfigurations.m600 = mkNixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          ./modules/host-m600.nix
-          ./modules/variant-desktop.nix
-        ];
-      };
-
-      nixosConfigurations.p2520la = mkNixosSystem {
-        system = "x86_64-linux";
-        modules = [
-          ./modules/host-p2520la.nix
-          ./modules/variant-desktop.nix
-          ./modules/comma.nix
-          ./modules/home.nix
-          ./modules/plasma.nix
-          ./modules/pipewire.nix
-        ];
-      };
-    }
+    in {
+      nixosConfigurations = mergeSets (builtins.map fileToConfiguration hostFiles);
+    })
+    # Set formatters for all architectures.
     // (flake-utils.lib.eachSystem flake-utils.lib.allSystems (system: let
       pkgs = import nixpkgs {inherit system;};
     in {
