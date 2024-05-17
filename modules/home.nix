@@ -15,8 +15,9 @@
     programs.bash.enable = true;
     programs.bash.enableCompletion = true;
 
-    programs.vim.enable = true;
-    programs.vim.defaultEditor = true;
+    programs.neovim.enable = true;
+    programs.neovim.defaultEditor = true;
+    programs.neovim.vimAlias = true;
 
     programs.git.enable = true;
     programs.git.lfs.enable = true;
