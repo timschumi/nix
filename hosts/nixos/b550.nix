@@ -6,6 +6,7 @@
     (inputs.self + "/modules/home.nix")
     (inputs.self + "/modules/plasma.nix")
     (inputs.self + "/modules/pipewire.nix")
+    (inputs.self + "/modules/steam.nix")
 
     (
       {
