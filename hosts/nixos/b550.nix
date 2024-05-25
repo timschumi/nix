@@ -36,6 +36,11 @@
           options = ["fmask=0022" "dmask=0022"];
         };
 
+        fileSystems."/mnt/data1" = {
+          device = "/dev/disk/by-uuid/ef261801-13a0-4f03-9713-93cf49808480";
+          fsType = "ext4";
+        };
+
         swapDevices = [];
 
         nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
