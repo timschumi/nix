@@ -2,6 +2,7 @@
   system = "x86_64-linux";
   modules = [
     (inputs.self + "/modules/variant-desktop.nix")
+    (inputs.self + "/modules/adb.nix")
     (inputs.self + "/modules/comma.nix")
     (inputs.self + "/modules/home.nix")
     (inputs.self + "/modules/plasma.nix")
