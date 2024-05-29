@@ -5,10 +5,12 @@
     (inputs.self + "/modules/adb.nix")
     (inputs.self + "/modules/comma.nix")
     (inputs.self + "/modules/discord.nix")
+    (inputs.self + "/modules/firefox.nix")
     (inputs.self + "/modules/home.nix")
     (inputs.self + "/modules/opentabletdriver.nix")
     (inputs.self + "/modules/plasma.nix")
     (inputs.self + "/modules/pipewire.nix")
+    (inputs.self + "/modules/spotify.nix")
     (inputs.self + "/modules/steam.nix")
 
     (

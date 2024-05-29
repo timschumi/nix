@@ -25,11 +25,5 @@
 
     programs.plasma.configFile."baloofilerc"."Basic Settings"."Indexing-Enabled" = false;
     programs.plasma.configFile."krunnerrc"."Plugins"."baloosearchEnabled" = false;
-
-    # TODO: Think about where to put these.
-    programs.firefox.enable = true;
-    home.packages = with pkgs; [
-      spotify
-    ];
   };
 }
