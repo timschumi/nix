@@ -2,6 +2,7 @@
   system = "i686-linux";
   modules = [
     (inputs.self + "/modules/variant-desktop.nix")
+    (inputs.self + "/modules/home.nix")
 
     (
       {
