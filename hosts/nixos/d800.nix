@@ -35,6 +35,7 @@
 
         nixpkgs.hostPlatform = lib.mkDefault "i686-linux";
         networking.enableIntel2200BGFirmware = true;
+        hardware.cpu.intel.updateMicrocode = true;
 
         boot.loader.grub.enable = true;
         boot.loader.grub.device = "/dev/sda";

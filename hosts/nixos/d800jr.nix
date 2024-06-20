@@ -35,6 +35,7 @@
         swapDevices = [];
 
         nixpkgs.hostPlatform = lib.mkDefault "i686-linux";
+        hardware.cpu.intel.updateMicrocode = true;
 
         boot.loader.grub.enable = true;
         boot.loader.grub.device = "/dev/sda";

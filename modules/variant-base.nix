@@ -9,8 +9,6 @@
 
   nixpkgs.config.allowUnfree = true;
   hardware.enableRedistributableFirmware = true;
-  hardware.cpu.amd.updateMicrocode = builtins.elem pkgs.system ["i686-linux" "x86_64-linux"];
-  hardware.cpu.intel.updateMicrocode = builtins.elem pkgs.system ["i686-linux" "x86_64-linux"];
 
   time.timeZone = "Europe/Berlin";
 
