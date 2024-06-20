@@ -27,6 +27,8 @@
     programs.git.aliases.ca = "c --amend";
     programs.git.aliases.cad = "ca --date=now";
     programs.git.aliases.graph = "log --oneline --graph";
+    programs.git.aliases.cu = "!env GIT_COMMITTER_DATE=\\\"$(date --utc +%Y-%m-%dT%H:%M:%S%z)\\\" git commit --verbose --date=\\\"$(date --utc +%Y-%m-%dT%H:%M:%S%z)\\\"";
+    programs.git.aliases.cau = "!env GIT_COMMITTER_DATE=\\\"$(date --utc +%Y-%m-%dT%H:%M:%S%z)\\\" git commit --verbose --date=\\\"$(date --utc +%Y-%m-%dT%H:%M:%S%z)\\\" --amend";
 
     programs.home-manager.enable = true;
   };
