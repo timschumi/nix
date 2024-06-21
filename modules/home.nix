@@ -12,6 +12,8 @@
     home.homeDirectory = "/home/tim";
     home.stateVersion = "23.11";
 
+    xdg.configFile."nixpkgs/config.nix".text = "{ allowUnfree = true; }";
+
     programs.bash.enable = true;
     programs.bash.enableCompletion = true;
 
