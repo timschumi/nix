@@ -26,4 +26,13 @@
     programs.plasma.configFile."baloofilerc"."Basic Settings"."Indexing-Enabled" = false;
     programs.plasma.configFile."krunnerrc"."Plugins"."baloosearchEnabled" = false;
   };
+
+  # Substitute lacking KIO functions with GVFS (in particular support for mounting avahi/dnssd/webdav).
+  services.gvfs.enable = true;
+  services.gvfs.package = pkgs.gvfs.override {
+    avahi = pkgs.avahi; # Required for webdav
+    samba = null;
+    gnomeSupport = true; # Required for TLS support
+    udevSupport = true; # Required for FUSE support
+  };
 }
