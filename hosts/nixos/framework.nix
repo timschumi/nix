@@ -14,6 +14,7 @@
     (inputs.self + "/modules/pipewire.nix")
     (inputs.self + "/modules/spotify.nix")
     (inputs.self + "/modules/steam.nix")
+    (inputs.self + "/modules/thunderbird.nix")
 
     (
       {
