@@ -29,6 +29,7 @@
     extraGroups = ["wheel"];
     packages = with pkgs; [
       htop
+      silver-searcher
     ];
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFWSvBiQLNvqFY4iCzJ7scnstK872QOS5VtzuyXlXNzV"
