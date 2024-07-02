@@ -8,6 +8,7 @@
     (inputs.self + "/modules/firefox.nix")
     (inputs.self + "/modules/home.nix")
     (inputs.self + "/modules/jetbrains.nix")
+    (inputs.self + "/modules/libvirt.nix")
     (inputs.self + "/modules/lutris.nix")
     (inputs.self + "/modules/opentabletdriver.nix")
     (inputs.self + "/modules/plasma.nix")
