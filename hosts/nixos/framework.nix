@@ -12,6 +12,7 @@
     (inputs.self + "/modules/opentabletdriver.nix")
     (inputs.self + "/modules/plasma.nix")
     (inputs.self + "/modules/pipewire.nix")
+    (inputs.self + "/modules/podman.nix")
     (inputs.self + "/modules/spotify.nix")
     (inputs.self + "/modules/steam.nix")
     (inputs.self + "/modules/thunderbird.nix")
