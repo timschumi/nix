@@ -9,6 +9,7 @@
       "aarch64-linux"
     ])
     (inputs.self + "/modules/firefox.nix")
+    (inputs.self + "/modules/gsr.nix")
     (inputs.self + "/modules/home.nix")
     (inputs.self + "/modules/libvirt.nix")
     (inputs.self + "/modules/lutris.nix")
