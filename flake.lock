@@ -74,6 +74,22 @@
         "type": "github"
       }
     },
+    "nixpkgs-gsr": {
+      "locked": {
+        "lastModified": 1720133070,
+        "narHash": "sha256-fo/KKxICtGyQAyYwlvwxuCZSyGhoY4MPR55zf02Q104=",
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "032e70533b134ea30c0359886dcdec547134dbdd",
+        "type": "github"
+      },
+      "original": {
+        "owner": "NixOS",
+        "repo": "nixpkgs",
+        "rev": "032e70533b134ea30c0359886dcdec547134dbdd",
+        "type": "github"
+      }
+    },
     "plasma-manager": {
       "inputs": {
         "home-manager": [
@@ -103,6 +119,7 @@
         "home-manager": "home-manager",
         "nix-index-database": "nix-index-database",
         "nixpkgs": "nixpkgs",
+        "nixpkgs-gsr": "nixpkgs-gsr",
         "plasma-manager": "plasma-manager"
       }
     },
