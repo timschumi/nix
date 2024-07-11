@@ -20,6 +20,15 @@
     programs.neovim.enable = true;
     programs.neovim.defaultEditor = true;
     programs.neovim.vimAlias = true;
+    programs.neovim.plugins = with pkgs.vimPlugins; [
+      {
+        plugin = vim-lastplace;
+        config = ''
+          let g:lastplace_ignore = "gitcommit,gitrebase,svn,hgcommit"
+          let g:lastplace_ignore_buftype = "quickfix,nofile,help"
+        '';
+      }
+    ];
 
     programs.git.enable = true;
     programs.git.lfs.enable = true;
