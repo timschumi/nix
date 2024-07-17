@@ -2,23 +2,13 @@
   pkgs,
   inputs,
   ...
-}: let
-  gsr = pkgs.callPackage "${inputs.nixpkgs-gsr}/pkgs/applications/video/gpu-screen-recorder/default.nix" {};
-  gsr-gtk = pkgs.callPackage "${inputs.nixpkgs-gsr}/pkgs/applications/video/gpu-screen-recorder/gpu-screen-recorder-gtk.nix" {
-    gpu-screen-recorder = gsr;
-  };
-in {
-  imports = [
-    "${inputs.nixpkgs-gsr}/nixos/modules/programs/gpu-screen-recorder.nix"
-  ];
-
-  programs.gpu-screen-recorder.wrapCapabilities = true;
-  programs.gpu-screen-recorder.package = gsr;
-  home-manager.users.tim = {
+}: {
+  programs.gpu-screen-recorder.enable = true;
+  home-manager.users.tim = with pkgs; {
     home.packages = [
-      gsr
-      gsr-gtk
-      pkgs.killall
+      gpu-screen-recorder
+      gpu-screen-recorder-gtk
+      killall
     ];
   };
 }
