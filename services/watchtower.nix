@@ -18,7 +18,7 @@
     ];
   };
 }
-// (inputs.self + "/lib/container-fail-restart.nix") {
+// import (inputs.self + "/lib/container-fail-restart.nix") {
   inherit config;
   unit = "watchtower";
   limit = 10;
