@@ -20,6 +20,7 @@
 }
 // import (inputs.self + "/lib/container-fail-restart.nix") {
   inherit config;
+  inherit lib;
   unit = "watchtower";
   limit = 10;
 }
