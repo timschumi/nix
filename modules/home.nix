@@ -16,6 +16,9 @@
 
     programs.bash.enable = true;
     programs.bash.enableCompletion = true;
+    programs.bash.historySize = -1;
+    programs.bash.historyFileSize = -1;
+    programs.bash.historyControl = ["ignoreboth"];
 
     programs.neovim.enable = true;
     programs.neovim.defaultEditor = true;
