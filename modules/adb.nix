@@ -8,6 +8,8 @@
 
   home-manager.users.tim = {
     home.packages = with pkgs; [
+      brotli
+      bsdiff
       (heimdall-gui.overrideAttrs (final: prev: rec {
         version = "2.0.2";
         src = pkgs.fetchFromSourcehut {
@@ -18,6 +20,7 @@
         };
       }))
       scrcpy
+      sdat2img
     ];
   };
 }

@@ -45,5 +45,13 @@
     programs.git.aliases.cau = "!env GIT_COMMITTER_DATE=\\\"$(date --utc +%Y-%m-%dT%H:%M:%S%z)\\\" git commit --verbose --date=\\\"$(date --utc +%Y-%m-%dT%H:%M:%S%z)\\\" --amend";
 
     programs.home-manager.enable = true;
+
+    home.packages = with pkgs; [
+      ascii
+      dig.dnsutils
+      dos2unix
+      pwgen
+      pwntools
+    ];
   };
 }

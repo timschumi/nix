@@ -27,6 +27,13 @@
 
     programs.plasma.configFile."baloofilerc"."Basic Settings"."Indexing-Enabled" = false;
     programs.plasma.configFile."krunnerrc"."Plugins"."baloosearchEnabled" = false;
+
+    home.packages = with pkgs; [
+      glib.bin
+      keepassxc
+      python3Full
+      vlc
+    ];
   };
 
   # Substitute lacking KIO functions with GVFS (in particular support for mounting avahi/dnssd/webdav).
