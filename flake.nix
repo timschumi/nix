@@ -2,7 +2,7 @@
   description = "NixOS";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-unstable";
+    nixpkgs.url = "github:NixOS/nixpkgs/4106f6710f442406b0f65f619c553d23d2066862";
     flake-utils.url = "github:numtide/flake-utils";
     nur.url = github:nix-community/NUR;
 
