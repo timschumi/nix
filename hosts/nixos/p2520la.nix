@@ -1,14 +1,14 @@
 {inputs, ...}: {
   system = "x86_64-linux";
   modules = [
-    (inputs.self + "/modules/variant-desktop.nix")
-    (inputs.self + "/modules/comma.nix")
-    (inputs.self + "/modules/discord.nix")
-    (inputs.self + "/modules/firefox.nix")
-    (inputs.self + "/modules/home.nix")
-    (inputs.self + "/modules/plasma.nix")
-    (inputs.self + "/modules/pipewire.nix")
-    (inputs.self + "/modules/spotify.nix")
+    (inputs.self + "/fragments/variant-desktop.nix")
+    (inputs.self + "/fragments/comma.nix")
+    (inputs.self + "/fragments/discord.nix")
+    (inputs.self + "/fragments/firefox.nix")
+    (inputs.self + "/fragments/home.nix")
+    (inputs.self + "/fragments/plasma.nix")
+    (inputs.self + "/fragments/pipewire.nix")
+    (inputs.self + "/fragments/spotify.nix")
 
     (
       {

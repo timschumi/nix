@@ -1,25 +1,25 @@
 {inputs, ...}: {
   system = "x86_64-linux";
   modules = [
-    (inputs.self + "/modules/variant-desktop.nix")
-    (inputs.self + "/modules/adb.nix")
-    (inputs.self + "/modules/comma.nix")
-    (inputs.self + "/modules/discord.nix")
-    (import (inputs.self + "/modules/emulate.nix") [
+    (inputs.self + "/fragments/variant-desktop.nix")
+    (inputs.self + "/fragments/adb.nix")
+    (inputs.self + "/fragments/comma.nix")
+    (inputs.self + "/fragments/discord.nix")
+    (import (inputs.self + "/fragments/emulate.nix") [
       "aarch64-linux"
     ])
-    (inputs.self + "/modules/firefox.nix")
-    (inputs.self + "/modules/home.nix")
-    (inputs.self + "/modules/jetbrains.nix")
-    (inputs.self + "/modules/libvirt.nix")
-    (inputs.self + "/modules/lutris.nix")
-    (inputs.self + "/modules/opentabletdriver.nix")
-    (inputs.self + "/modules/plasma.nix")
-    (inputs.self + "/modules/pipewire.nix")
-    (inputs.self + "/modules/podman.nix")
-    (inputs.self + "/modules/spotify.nix")
-    (inputs.self + "/modules/steam.nix")
-    (inputs.self + "/modules/thunderbird.nix")
+    (inputs.self + "/fragments/firefox.nix")
+    (inputs.self + "/fragments/home.nix")
+    (inputs.self + "/fragments/jetbrains.nix")
+    (inputs.self + "/fragments/libvirt.nix")
+    (inputs.self + "/fragments/lutris.nix")
+    (inputs.self + "/fragments/opentabletdriver.nix")
+    (inputs.self + "/fragments/plasma.nix")
+    (inputs.self + "/fragments/pipewire.nix")
+    (inputs.self + "/fragments/podman.nix")
+    (inputs.self + "/fragments/spotify.nix")
+    (inputs.self + "/fragments/steam.nix")
+    (inputs.self + "/fragments/thunderbird.nix")
 
     (
       {

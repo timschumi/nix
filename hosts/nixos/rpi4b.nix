@@ -1,9 +1,9 @@
 {inputs, ...}: {
   system = "aarch64-linux";
   modules = [
-    (inputs.self + "/modules/variant-desktop.nix")
-    (inputs.self + "/modules/comma.nix")
-    (inputs.self + "/modules/home.nix")
+    (inputs.self + "/fragments/variant-desktop.nix")
+    (inputs.self + "/fragments/comma.nix")
+    (inputs.self + "/fragments/home.nix")
 
     (inputs.nixpkgs + "/nixos/modules/installer/sd-card/sd-image-aarch64.nix")
 
