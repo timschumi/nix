@@ -37,7 +37,7 @@
       hostNameFromFile = nixpkgs.lib.strings.removeSuffix ".nix";
       fileToConfiguration = file: {
         "${hostNameFromFile file}" = nixpkgs.lib.nixosSystem (
-          (import (hostsDir + ("/" + file)) commonSettings.specialArgs) // commonSettings
+          nixpkgs.lib.attrsets.recursiveUpdate commonSettings (import (hostsDir + ("/" + file)) commonSettings.specialArgs)
         );
       };
     in {

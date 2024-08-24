@@ -9,7 +9,7 @@ lib: {
     allowedIPHosts = map getHost allowedIPs;
   in
     ! (builtins.any (e: e == ipHost) allowedIPHosts);
-  peerMap = peer: (lib.attrsets.optionalAttrs (builtins.hasAttr "endpoint" peer) endpointPeerExtra) // peer;
+  peerMap = peer: nixpkgs.lib.attrsets.recursiveUpdate (lib.attrsets.optionalAttrs (builtins.hasAttr "endpoint" peer) endpointPeerExtra) peer;
 in
   wireguardConfig
   // {
