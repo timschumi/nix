@@ -2,6 +2,13 @@
   description = "NixOS";
 
   inputs = {
+    devshell = {
+      url = "github:numtide/devshell";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+      };
+    };
+
     flake-utils = {
       url = "github:numtide/flake-utils";
     };
@@ -38,6 +45,7 @@
   };
 
   outputs = {
+    devshell,
     flake-utils,
     nixpkgs,
     self,
@@ -62,6 +70,24 @@
       };
     in {
       nixosConfigurations = mergeSets (builtins.map fileToConfiguration hostFiles);
+    })
+    # Add all global devshells.
+    // (let
+      shellsDir = ./shells;
+      shellFiles = builtins.attrNames (nixpkgs.lib.attrsets.filterAttrs (path: type: type == "regular") (builtins.readDir shellsDir));
+      mergeSets = builtins.foldl' (acc: elem: acc // elem) {};
+      shellNameFromFile = nixpkgs.lib.strings.removeSuffix ".nix";
+      fileToConfiguration = file:
+        flake-utils.lib.eachSystemMap flake-utils.lib.allSystems (system: {
+          "${shellNameFromFile file}" = import (shellsDir + ("/" + file)) {
+            pkgs = import nixpkgs {
+              inherit system;
+              overlays = [devshell.overlays.default];
+            };
+          };
+        });
+    in {
+      devShells = mergeSets (builtins.map fileToConfiguration shellFiles);
     })
     # Set formatters for all architectures.
     // (flake-utils.lib.eachSystem flake-utils.lib.allSystems (system: let
