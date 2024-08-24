@@ -1,6 +1,6 @@
 {
-  pkgs,
   inputs,
+  pkgs,
   ...
 }: {
   imports = [
@@ -8,50 +8,59 @@
   ];
 
   home-manager.users.tim = {
-    home.username = "tim";
-    home.homeDirectory = "/home/tim";
-    home.stateVersion = "23.11";
+    home = {
+      username = "tim";
+      homeDirectory = "/home/tim";
+      stateVersion = "23.11";
+      packages = with pkgs; [
+        ascii
+        dig.dnsutils
+        dos2unix
+        pwgen
+        pwntools
+      ];
+    };
 
     xdg.configFile."nixpkgs/config.nix".text = "{ allowUnfree = true; }";
 
-    programs.bash.enable = true;
-    programs.bash.enableCompletion = true;
-    programs.bash.historySize = -1;
-    programs.bash.historyFileSize = -1;
-    programs.bash.historyControl = ["ignoreboth"];
+    programs.bash = {
+      enable = true;
+      enableCompletion = true;
+      historySize = -1;
+      historyFileSize = -1;
+      historyControl = ["ignoreboth"];
+    };
 
-    programs.neovim.enable = true;
-    programs.neovim.defaultEditor = true;
-    programs.neovim.vimAlias = true;
-    programs.neovim.plugins = with pkgs.vimPlugins; [
-      {
-        plugin = vim-lastplace;
-        config = ''
-          let g:lastplace_ignore = "gitcommit,gitrebase,svn,hgcommit"
-          let g:lastplace_ignore_buftype = "quickfix,nofile,help"
-        '';
-      }
-    ];
+    programs.neovim = {
+      enable = true;
+      defaultEditor = true;
+      vimAlias = true;
+      plugins = with pkgs.vimPlugins; [
+        {
+          plugin = vim-lastplace;
+          config = ''
+            let g:lastplace_ignore = "gitcommit,gitrebase,svn,hgcommit"
+            let g:lastplace_ignore_buftype = "quickfix,nofile,help"
+          '';
+        }
+      ];
+    };
 
-    programs.git.enable = true;
-    programs.git.lfs.enable = true;
-    programs.git.userName = "Tim Schumacher";
-    programs.git.userEmail = "timschumi@gmx.de";
-    programs.git.aliases.c = "commit --verbose";
-    programs.git.aliases.ca = "c --amend";
-    programs.git.aliases.cad = "ca --date=now";
-    programs.git.aliases.graph = "log --oneline --graph";
-    programs.git.aliases.cu = "!env GIT_COMMITTER_DATE=\\\"$(date --utc +%Y-%m-%dT%H:%M:%S%z)\\\" git commit --verbose --date=\\\"$(date --utc +%Y-%m-%dT%H:%M:%S%z)\\\"";
-    programs.git.aliases.cau = "!env GIT_COMMITTER_DATE=\\\"$(date --utc +%Y-%m-%dT%H:%M:%S%z)\\\" git commit --verbose --date=\\\"$(date --utc +%Y-%m-%dT%H:%M:%S%z)\\\" --amend";
+    programs.git = {
+      enable = true;
+      lfs.enable = true;
+      userName = "Tim Schumacher";
+      userEmail = "timschumi@gmx.de";
+      aliases.c = "commit --verbose";
+      aliases.ca = "c --amend";
+      aliases.cad = "ca --date=now";
+      aliases.graph = "log --oneline --graph";
+      aliases.cu = "!env GIT_COMMITTER_DATE=\\\"$(date --utc +%Y-%m-%dT%H:%M:%S%z)\\\" git commit --verbose --date=\\\"$(date --utc +%Y-%m-%dT%H:%M:%S%z)\\\"";
+      aliases.cau = "!env GIT_COMMITTER_DATE=\\\"$(date --utc +%Y-%m-%dT%H:%M:%S%z)\\\" git commit --verbose --date=\\\"$(date --utc +%Y-%m-%dT%H:%M:%S%z)\\\" --amend";
+    };
 
-    programs.home-manager.enable = true;
-
-    home.packages = with pkgs; [
-      ascii
-      dig.dnsutils
-      dos2unix
-      pwgen
-      pwntools
-    ];
+    programs.home-manager = {
+      enable = true;
+    };
   };
 }

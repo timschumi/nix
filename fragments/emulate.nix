@@ -1,6 +1,6 @@
 systems: {
-  pkgs,
   inputs,
+  pkgs,
   ...
 }: {
   boot.binfmt.emulatedSystems = systems;

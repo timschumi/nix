@@ -1,10 +1,14 @@
 {
-  pkgs,
   inputs,
+  pkgs,
   ...
 }: {
-  services.displayManager.sddm.enable = true;
-  services.displayManager.sddm.wayland.enable = true;
+  services.displayManager = {
+    sddm = {
+      enable = true;
+      wayland.enable = true;
+    };
+  };
   services.desktopManager.plasma6.enable = true;
 
   home-manager.users.tim = {
@@ -12,21 +16,45 @@
       inputs.plasma-manager.homeManagerModules.plasma-manager
     ];
 
-    programs.plasma.enable = true;
-    programs.plasma.workspace.clickItemTo = "select";
-    programs.plasma.workspace.lookAndFeel = "org.kde.breezedark.desktop";
-    programs.plasma.workspace.cursor.theme = "Breeze";
-    programs.plasma.workspace.iconTheme = "breeze";
-    programs.plasma.workspace.wallpaper = "${pkgs.plasma-workspace-wallpapers}/share/wallpapers/Kay/contents/images_dark/5120x2880.png";
+    programs.plasma = {
+      enable = true;
 
-    programs.plasma.powerdevil.AC.autoSuspend.action = "nothing";
+      workspace = {
+        clickItemTo = "select";
+        lookAndFeel = "org.kde.breezedark.desktop";
+        cursor.theme = "Breeze";
+        iconTheme = "breeze";
+        wallpaper = "${pkgs.plasma-workspace-wallpapers}/share/wallpapers/Kay/contents/images_dark/5120x2880.png";
+      };
 
-    programs.plasma.configFile."kxkbrc"."Layout"."LayoutList" = "de";
-    programs.plasma.configFile."kxkbrc"."Layout"."Use" = true;
-    programs.plasma.configFile."kxkbrc"."Layout"."VariantList" = "nodeadkeys";
+      powerdevil = {
+        AC = {
+          autoSuspend.action = "nothing";
+        };
+      };
 
-    programs.plasma.configFile."baloofilerc"."Basic Settings"."Indexing-Enabled" = false;
-    programs.plasma.configFile."krunnerrc"."Plugins"."baloosearchEnabled" = false;
+      configFile = {
+        kxkbrc = {
+          Layout = {
+            LayoutList = "de";
+            Use = true;
+            VariantList = "nodeadkeys";
+          };
+        };
+
+        baloofilerc = {
+          "Basic Settings" = {
+            Indexing-Enabled = false;
+          };
+        };
+
+        krunnerrc = {
+          Plugins = {
+            baloosearchEnabled = false;
+          };
+        };
+      };
+    };
 
     home.packages = with pkgs; [
       glib.bin

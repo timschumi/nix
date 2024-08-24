@@ -1,10 +1,16 @@
 {
-  pkgs,
   inputs,
+  pkgs,
   ...
 }: {
   home-manager.users.tim = {
-    programs.thunderbird.enable = true;
-    programs.thunderbird.profiles.main.isDefault = true;
+    programs.thunderbird = {
+      enable = true;
+      profiles = {
+        main = {
+          isDefault = true;
+        };
+      };
+    };
   };
 }

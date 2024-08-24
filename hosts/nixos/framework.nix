@@ -1,7 +1,6 @@
 {inputs, ...}: {
   system = "x86_64-linux";
   modules = [
-    (inputs.self + "/fragments/variant-desktop.nix")
     (inputs.self + "/fragments/adb.nix")
     (inputs.self + "/fragments/comma.nix")
     (inputs.self + "/fragments/discord.nix")
@@ -20,6 +19,7 @@
     (inputs.self + "/fragments/spotify.nix")
     (inputs.self + "/fragments/steam.nix")
     (inputs.self + "/fragments/thunderbird.nix")
+    (inputs.self + "/fragments/variant-desktop.nix")
 
     (
       {

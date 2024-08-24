@@ -1,9 +1,9 @@
 {inputs, ...}: {
   system = "x86_64-linux";
   modules = [
-    (inputs.self + "/fragments/variant-desktop.nix")
     (inputs.self + "/fragments/comma.nix")
     (inputs.self + "/fragments/home.nix")
+    (inputs.self + "/fragments/variant-desktop.nix")
 
     (
       {
@@ -30,7 +30,7 @@
         fileSystems."/boot" = {
           device = "/dev/disk/by-uuid/3959-DCD2";
           fsType = "vfat";
-	  options = ["fmask=0077" "dmask=0077"];
+          options = ["fmask=0077" "dmask=0077"];
         };
 
         swapDevices = [];

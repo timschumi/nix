@@ -1,6 +1,6 @@
 {
-  pkgs,
   inputs,
+  pkgs,
   ...
 }: {
   imports = [
@@ -10,7 +10,12 @@
   # ???
   programs.command-not-found.enable = false;
 
-  programs.nix-index.enable = true;
-  programs.nix-index.enableBashIntegration = true;
-  programs.nix-index-database.comma.enable = true;
+  programs.nix-index = {
+    enable = true;
+    enableBashIntegration = true;
+  };
+
+  programs.nix-index-database = {
+    comma.enable = true;
+  };
 }

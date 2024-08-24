@@ -5,10 +5,14 @@
   pkgs,
   ...
 }: {
-  nix.settings.experimental-features = ["nix-command" "flakes"];
-  nix.settings.require-sigs = false;
-  nix.registry = {
-    self.flake = inputs.self;
+  nix = {
+    settings = {
+      experimental-features = ["nix-command" "flakes"];
+      require-sigs = false;
+    };
+    registry = {
+      self.flake = inputs.self;
+    };
   };
 
   nixpkgs.config.allowUnfree = true;

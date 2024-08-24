@@ -3,8 +3,10 @@
     ./variant-base.nix
   ];
 
-  networking.firewall.enable = true;
-  networking.wireless.enable = true;
+  networking = {
+    firewall.enable = true;
+    wireless.enable = true;
+  };
 
   services.openssh = {
     settings = {

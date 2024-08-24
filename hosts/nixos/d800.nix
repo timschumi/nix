@@ -1,8 +1,8 @@
 {inputs, ...}: {
   system = "i686-linux";
   modules = [
-    (inputs.self + "/fragments/variant-desktop.nix")
     (inputs.self + "/fragments/home.nix")
+    (inputs.self + "/fragments/variant-desktop.nix")
 
     (
       {

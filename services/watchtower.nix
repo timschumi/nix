@@ -1,8 +1,8 @@
 {
   config,
   inputs,
-  pkgs,
   lib,
+  pkgs,
   ...
 }:
 {
@@ -14,7 +14,8 @@
     log-driver = "journald";
     cmd = [
       "--cleanup"
-      "--interval" "300"
+      "--interval"
+      "300"
     ];
   };
 }
