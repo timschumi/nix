@@ -1,11 +1,15 @@
 {
   config,
+  inputs,
   lib,
   pkgs,
   ...
 }: {
   nix.settings.experimental-features = ["nix-command" "flakes"];
   nix.settings.require-sigs = false;
+  nix.registry = {
+    self.flake = inputs.self;
+  };
 
   nixpkgs.config.allowUnfree = true;
   hardware.enableRedistributableFirmware = true;
