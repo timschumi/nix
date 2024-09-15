@@ -1,9 +1,24 @@
 {inputs, ...}: {
   system = "x86_64-linux";
   modules = [
+    (inputs.self + "/modules/users")
     (inputs.self + "/fragments/comma.nix")
-    (inputs.self + "/fragments/home.nix")
     (inputs.self + "/fragments/variant-desktop.nix")
+
+    (
+      {...}: {
+        config = {
+          extra = {
+            user = {
+              tim = {
+                roles = [
+                ];
+              };
+            };
+          };
+        };
+      }
+    )
 
     ({
       config,

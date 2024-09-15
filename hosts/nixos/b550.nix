@@ -1,6 +1,7 @@
 {inputs, ...}: {
   system = "x86_64-linux";
   modules = [
+    (inputs.self + "/modules/users")
     (inputs.self + "/fragments/adb.nix")
     (inputs.self + "/fragments/comma.nix")
     (inputs.self + "/fragments/discord.nix")
@@ -9,7 +10,6 @@
     ])
     (inputs.self + "/fragments/firefox.nix")
     (inputs.self + "/fragments/gsr.nix")
-    (inputs.self + "/fragments/home.nix")
     (inputs.self + "/fragments/libvirt.nix")
     (inputs.self + "/fragments/lutris.nix")
     (inputs.self + "/fragments/opentabletdriver.nix")
@@ -19,6 +19,21 @@
     (inputs.self + "/fragments/steam.nix")
     (inputs.self + "/fragments/thunderbird.nix")
     (inputs.self + "/fragments/variant-desktop.nix")
+
+    (
+      {...}: {
+        config = {
+          extra = {
+            user = {
+              tim = {
+                roles = [
+                ];
+              };
+            };
+          };
+        };
+      }
+    )
 
     (
       {

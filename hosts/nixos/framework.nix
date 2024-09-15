@@ -1,6 +1,7 @@
 {inputs, ...}: {
   system = "x86_64-linux";
   modules = [
+    (inputs.self + "/modules/users")
     (inputs.self + "/fragments/adb.nix")
     (inputs.self + "/fragments/comma.nix")
     (inputs.self + "/fragments/discord.nix")
@@ -8,7 +9,6 @@
       "aarch64-linux"
     ])
     (inputs.self + "/fragments/firefox.nix")
-    (inputs.self + "/fragments/home.nix")
     (inputs.self + "/fragments/jetbrains.nix")
     (inputs.self + "/fragments/libvirt.nix")
     (inputs.self + "/fragments/lutris.nix")
@@ -20,6 +20,22 @@
     (inputs.self + "/fragments/steam.nix")
     (inputs.self + "/fragments/thunderbird.nix")
     (inputs.self + "/fragments/variant-desktop.nix")
+
+    (
+      {...}: {
+        config = {
+          extra = {
+            user = {
+              tim = {
+                roles = [
+                  "cad"
+                ];
+              };
+            };
+          };
+        };
+      }
+    )
 
     (
       {

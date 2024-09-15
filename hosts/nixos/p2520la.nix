@@ -1,14 +1,29 @@
 {inputs, ...}: {
   system = "x86_64-linux";
   modules = [
+    (inputs.self + "/modules/users")
     (inputs.self + "/fragments/comma.nix")
     (inputs.self + "/fragments/discord.nix")
     (inputs.self + "/fragments/firefox.nix")
-    (inputs.self + "/fragments/home.nix")
     (inputs.self + "/fragments/plasma.nix")
     (inputs.self + "/fragments/pipewire.nix")
     (inputs.self + "/fragments/spotify.nix")
     (inputs.self + "/fragments/variant-desktop.nix")
+
+    (
+      {...}: {
+        config = {
+          extra = {
+            user = {
+              tim = {
+                roles = [
+                ];
+              };
+            };
+          };
+        };
+      }
+    )
 
     (
       {

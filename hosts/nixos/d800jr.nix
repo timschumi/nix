@@ -1,8 +1,23 @@
 {inputs, ...}: {
   system = "i686-linux";
   modules = [
-    (inputs.self + "/fragments/home.nix")
+    (inputs.self + "/modules/users")
     (inputs.self + "/fragments/variant-desktop.nix")
+
+    (
+      {...}: {
+        config = {
+          extra = {
+            user = {
+              tim = {
+                roles = [
+                ];
+              };
+            };
+          };
+        };
+      }
+    )
 
     (
       {

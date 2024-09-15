@@ -1,11 +1,26 @@
 {inputs, ...}: {
   system = "aarch64-linux";
   modules = [
+    (inputs.self + "/modules/users")
     (inputs.self + "/fragments/comma.nix")
-    (inputs.self + "/fragments/home.nix")
     (inputs.self + "/fragments/variant-desktop.nix")
 
     (inputs.nixpkgs + "/nixos/modules/installer/sd-card/sd-image-aarch64.nix")
+
+    (
+      {...}: {
+        config = {
+          extra = {
+            user = {
+              tim = {
+                roles = [
+                ];
+              };
+            };
+          };
+        };
+      }
+    )
 
     (
       {
