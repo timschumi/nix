@@ -2,7 +2,6 @@
   system = "x86_64-linux";
   modules = [
     (inputs.self + "/modules/users")
-    (inputs.self + "/fragments/adb.nix")
     (inputs.self + "/fragments/comma.nix")
     (inputs.self + "/fragments/discord.nix")
     (import (inputs.self + "/fragments/emulate.nix") [
@@ -27,6 +26,7 @@
             user = {
               tim = {
                 roles = [
+                  "android"
                 ];
               };
             };
