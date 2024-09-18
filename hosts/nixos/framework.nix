@@ -29,6 +29,7 @@
               tim = {
                 roles = [
                   "cad"
+                  "dev-rust"
                 ];
               };
             };
