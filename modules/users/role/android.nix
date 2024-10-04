@@ -13,7 +13,10 @@
 in {
   config = mkIf (elem role config.extra.user."${user}".roles) {
     programs.adb.enable = true;
-    users.users."${user}".extraGroups = ["adbusers"];
+    users.users."${user}".extraGroups = [
+      "adbusers"
+      "dialout"
+    ];
 
     home-manager.users."${user}" = {
       home.packages = with pkgs; [
