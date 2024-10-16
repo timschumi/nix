@@ -19,7 +19,7 @@
     ];
   };
 }
-// import (inputs.self + "/lib/container-fail-restart.nix") {
+// import (inputs.self + "/helpers/container-fail-restart.nix") {
   inherit config;
   inherit lib;
   unit = "watchtower";
