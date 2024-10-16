@@ -54,45 +54,43 @@
     {}
     # Load all nixos hosts and apply common settings.
     // (let
-      hostsDir = ./hosts/nixos;
       commonSettings = {
         specialArgs = {
           inherit inputs;
         };
       };
-      hostFiles = builtins.attrNames (nixpkgs.lib.attrsets.filterAttrs (path: type: type == "regular") (builtins.readDir hostsDir));
-      mergeSets = builtins.foldl' (acc: elem: acc // elem) {};
-      hostNameFromFile = nixpkgs.lib.strings.removeSuffix ".nix";
-      fileToConfiguration = file: {
-        "${hostNameFromFile file}" = nixpkgs.lib.nixosSystem (
-          nixpkgs.lib.attrsets.recursiveUpdate commonSettings (import (hostsDir + ("/" + file)) commonSettings.specialArgs)
-        );
-      };
+      hosts = self.lib.enumerateNixFiles ./hosts/nixos;
+      loadHost = hostpath: nixpkgs.lib.nixosSystem (nixpkgs.lib.attrsets.recursiveUpdate commonSettings (import hostpath commonSettings.specialArgs));
     in {
-      nixosConfigurations = mergeSets (builtins.map fileToConfiguration hostFiles);
+      nixosConfigurations = nixpkgs.lib.mapAttrs (host: hostpath: loadHost hostpath) hosts;
     })
     # Add all global devshells.
     // (let
-      shellsDir = ./shells;
-      shellFiles = builtins.attrNames (nixpkgs.lib.attrsets.filterAttrs (path: type: type == "regular") (builtins.readDir shellsDir));
-      mergeSets = builtins.foldl' (acc: elem: acc // elem) {};
-      shellNameFromFile = nixpkgs.lib.strings.removeSuffix ".nix";
-      fileToConfiguration = file:
-        flake-utils.lib.eachSystemMap flake-utils.lib.allSystems (system: {
-          "${shellNameFromFile file}" = import (shellsDir + ("/" + file)) {
-            pkgs = import nixpkgs {
-              inherit system;
-              overlays = [devshell.overlays.default];
-            };
+      shells = self.lib.enumerateNixFiles ./shells;
+      loadShell = shellpath: system:
+        import shellpath {
+          pkgs = import nixpkgs {
+            inherit system;
+            overlays = [
+              devshell.overlays.default
+            ];
           };
-        });
+        };
     in {
-      devShells = mergeSets (builtins.map fileToConfiguration shellFiles);
+      devShells = flake-utils.lib.eachSystemMap flake-utils.lib.allSystems (
+        system: nixpkgs.lib.mapAttrs (shell: shellpath: loadShell shellpath system) shells
+      );
     })
     # Set formatters for all architectures.
     // (flake-utils.lib.eachSystem flake-utils.lib.allSystems (system: let
       pkgs = import nixpkgs {inherit system;};
     in {
       formatter = pkgs.alejandra;
-    }));
+    }))
+    # Extra attrset entries that are not generated.
+    // {
+      lib = import ./lib {
+        inherit inputs;
+      };
+    };
 }

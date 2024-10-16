@@ -4,33 +4,32 @@
   pkgs,
   ...
 }: let
-  inherit (builtins) attrNames concatMap foldl' map readDir;
-  inherit (inputs.nixpkgs.lib) filterAttrs removeSuffix;
+  inherit (builtins) attrNames concatLists foldl' map;
+  inherit (inputs.nixpkgs.lib.attrsets) mapAttrsToList;
   inherit (inputs.nixpkgs.lib.options) mkEnableOption mkOption;
   inherit (inputs.nixpkgs.lib.types) listOf nullOr str;
-  usersDir = ./user;
-  users = map (removeSuffix ".nix") (attrNames (filterAttrs (path: type: type == "regular") (readDir usersDir)));
-  rolesDir = ./role;
-  roles = map (removeSuffix ".nix") (attrNames (filterAttrs (path: type: type == "regular") (readDir rolesDir)));
+  inherit (inputs.self.lib) enumerateNixFiles;
+  users = enumerateNixFiles ./user;
+  roles = enumerateNixFiles ./role;
 in {
   imports =
     [
       inputs.home-manager.nixosModules.home-manager
     ]
-    ++ concatMap (
-      user:
-        [
-          (import (usersDir + ("/" + user + ".nix")) {
-            inherit user;
-          })
-        ]
-        ++ map (role:
-          import (rolesDir + ("/" + role + ".nix")) {
-            inherit role user;
-          })
-        roles
-    )
-    users;
+    ++ concatLists (mapAttrsToList (
+        user: userpath:
+          [
+            (import userpath {
+              inherit user;
+            })
+          ]
+          ++ mapAttrsToList (role: rolepath:
+            import rolepath {
+              inherit role user;
+            })
+          roles
+      )
+      users);
 
   options.extra.user = foldl' (a: b: a // b) {} (map (user: {
       "${user}" = {
@@ -46,5 +45,5 @@ in {
         };
       };
     })
-    users);
+    (attrNames users));
 }
