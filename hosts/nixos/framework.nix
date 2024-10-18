@@ -30,6 +30,7 @@
                 roles = [
                   "android"
                   "cad"
+		  "dev-cpp"
                   "dev-rust"
                 ];
               };
