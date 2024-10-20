@@ -34,8 +34,7 @@ in {
       cmd = [
         "--scope"
         "nix"
-        # FIXME: Link this into the systemd container management.
-        "--monitor-only"
+        "--no-restart"
         "--cleanup"
         "--interval"
         "300"
