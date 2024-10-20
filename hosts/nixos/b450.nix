@@ -1,7 +1,6 @@
 {inputs, ...}: {
   system = "x86_64-linux";
   modules = [
-    (inputs.self + "/modules/users")
     (inputs.self + "/fragments/comma.nix")
     (import (inputs.self + "/fragments/emulate.nix") [
       "aarch64-linux"

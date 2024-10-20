@@ -83,6 +83,9 @@
           // {
             modules =
               configurationBase.modules
+              ++ [
+                ./modules
+              ]
               ++ (
                 if output != null
                 then [output.value]
