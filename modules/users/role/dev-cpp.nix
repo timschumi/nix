@@ -16,8 +16,8 @@ in {
       home.packages = with pkgs; [
         jetbrains.clion
         clang
-	clang-tools
-	pkg-config
+        clang-tools
+        pkg-config
       ];
     };
   };
