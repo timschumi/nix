@@ -15,6 +15,7 @@ in {
     home-manager.users."${user}" = {
       home.packages = with pkgs; [
         jetbrains.rider
+        msbuild
       ];
     };
   };
