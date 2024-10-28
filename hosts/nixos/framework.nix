@@ -7,7 +7,6 @@
       "aarch64-linux"
     ])
     (inputs.self + "/fragments/firefox.nix")
-    (inputs.self + "/fragments/jetbrains.nix")
     (inputs.self + "/fragments/libvirt.nix")
     (inputs.self + "/fragments/lutris.nix")
     (inputs.self + "/fragments/opentabletdriver.nix")
@@ -30,6 +29,10 @@
                   "android"
                   "cad"
                   "dev-cpp"
+                  "dev-dotnet"
+                  "dev-java"
+                  "dev-php"
+                  "dev-py"
                   "dev-rust"
                 ];
               };
