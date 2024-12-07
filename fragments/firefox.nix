@@ -5,7 +5,7 @@
   ...
 }: {
   imports = [
-    inputs.nur.nixosModules.nur
+    inputs.nur.modules.nixos.default
   ];
 
   home-manager.users.tim = {
@@ -14,7 +14,7 @@
       profiles = {
         main = {
           isDefault = true;
-          extensions = with config.nur.repos.rycee.firefox-addons; [
+          extensions = with pkgs.nur.repos.rycee.firefox-addons; [
             keepassxc-browser
             reddit-enhancement-suite
             sponsorblock
