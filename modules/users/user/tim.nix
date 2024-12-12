@@ -44,6 +44,9 @@ in {
             '';
           }
         ];
+        extraConfig = ''
+          set shada=!,'100,h
+        '';
       };
 
       programs.git = {
