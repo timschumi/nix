@@ -4,6 +4,7 @@
   targetPkgs = pkgs: (with pkgs; [
     ccache
     fontconfig
+    gcc-unwrapped
     git-lfs
     git-repo
     m4
