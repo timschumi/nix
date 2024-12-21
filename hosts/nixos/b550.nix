@@ -13,6 +13,7 @@
     (inputs.self + "/fragments/opentabletdriver.nix")
     (inputs.self + "/fragments/plasma.nix")
     (inputs.self + "/fragments/pipewire.nix")
+    (inputs.self + "/fragments/podman.nix")
     (inputs.self + "/fragments/printing.nix")
     (inputs.self + "/fragments/spotify.nix")
     (inputs.self + "/fragments/steam.nix")
