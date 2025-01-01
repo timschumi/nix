@@ -18,5 +18,11 @@ in {
         msbuild
       ];
     };
+
+    nixpkgs.config.permittedInsecurePackages = [
+      # FIXME: Required by msbuild (#326335).
+      "dotnet-runtime-6.0.36"
+      "dotnet-sdk-6.0.428"
+    ];
   };
 }
