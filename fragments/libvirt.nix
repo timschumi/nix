@@ -8,7 +8,7 @@
     enable = true;
     qemu = {
       package = pkgs.qemu_full.override {
-        # FIXME: Required due to ceph build failure via python3.11-trustme (#359723/#369777).
+        # FIXME: Required due to ceph build failure (#369777).
         cephSupport = false;
       };
       runAsRoot = true;
