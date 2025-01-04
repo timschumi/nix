@@ -62,7 +62,7 @@
         networking.enableIntel2200BGFirmware = true;
         hardware.cpu.intel.updateMicrocode = true;
 
-        boot.loader.grub.enable = true;
+        boot.loader.grub.enable = lib.mkDefault true;
         boot.loader.grub.device = "/dev/sda";
 
         networking.hostName = "d800";
