@@ -11,6 +11,9 @@
 
     flake-utils = {
       url = "github:numtide/flake-utils";
+      inputs = {
+        systems.follows = "systems";
+      };
     };
 
     home-manager = {
@@ -44,6 +47,11 @@
         nixpkgs.follows = "nixpkgs";
         home-manager.follows = "home-manager";
       };
+    };
+
+    systems = {
+      url = "path:./flake.systems.nix";
+      flake = false;
     };
 
     treefmt-nix = {
@@ -120,13 +128,13 @@
           };
       in
       {
-        devShells = flake-utils.lib.eachSystemMap flake-utils.lib.allSystems (
+        devShells = flake-utils.lib.eachDefaultSystemMap (
           system: nixpkgs.lib.mapAttrs (shell: shellpath: loadShell shellpath system) shells
         );
       }
     )
     # Set formatters for all architectures.
-    // (flake-utils.lib.eachSystem flake-utils.lib.allSystems (
+    // (flake-utils.lib.eachDefaultSystem (
       system:
       let
         pkgs = nixpkgs.legacyPackages.${system};
