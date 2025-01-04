@@ -6,6 +6,7 @@
   inherit (inputs.nixpkgs.lib) mkIf;
   inherit (inputs.nixpkgs.lib.options) mkEnableOption mkOption;
   inherit (inputs.nixpkgs.lib.types) str;
+  cfg = config.extra.services.blog;
 in {
   options.extra.services.blog = {
     enable = mkEnableOption "Enable the `blog` service";
@@ -14,7 +15,7 @@ in {
     };
   };
 
-  config = mkIf config.extra.services.blog.enable {
+  config = mkIf cfg.enable {
     virtualisation.oci-containers.containers."blog" = {
       image = "ghcr.io/timschumi/blog:latest";
       login = {
@@ -28,7 +29,7 @@ in {
       labels = {
         "traefik.enable" = "true";
         "traefik.http.routers.blog.entrypoints" = "public-https";
-        "traefik.http.routers.blog.rule" = "Host(`${config.extra.services.blog.domain}`)";
+        "traefik.http.routers.blog.rule" = "Host(`${cfg.domain}`)";
       };
       log-driver = "journald";
     };
