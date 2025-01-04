@@ -1,8 +1,11 @@
-{inputs}: let
-  importWithInherit = path:
+{ inputs }:
+let
+  importWithInherit =
+    path:
     import path {
       inherit inputs;
     };
-in {
+in
+{
   enumerateNixFiles = importWithInherit ./enumerateNixFiles.nix;
 }

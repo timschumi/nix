@@ -2,7 +2,8 @@
   inputs,
   pkgs,
   ...
-}: {
+}:
+{
   virtualisation.libvirtd = {
     enable = true;
     qemu = {
@@ -18,15 +19,14 @@
           (pkgs.OVMF.override {
             secureBoot = true;
             tpmSupport = true;
-          })
-          .fd
+          }).fd
         ];
       };
     };
   };
 
   users.users.tim = {
-    extraGroups = ["libvirtd"];
+    extraGroups = [ "libvirtd" ];
   };
 
   home-manager.users.tim = {

@@ -2,7 +2,8 @@
   inputs,
   pkgs,
   ...
-}: {
+}:
+{
   home-manager.users.tim = {
     programs.thunderbird = {
       enable = true;

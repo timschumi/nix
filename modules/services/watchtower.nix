@@ -2,13 +2,15 @@
   config,
   inputs,
   ...
-}: let
+}:
+let
   inherit (builtins) attrNames;
   inherit (inputs.nixpkgs.lib) mkIf;
   inherit (inputs.nixpkgs.lib.attrsets) genAttrs;
   inherit (inputs.nixpkgs.lib.options) mkEnableOption mkOption;
   inherit (inputs.nixpkgs.lib.types) attrsOf submodule;
-in {
+in
+{
   options.extra.services.watchtower = {
     enable = mkEnableOption "Enable the `watchtower` service";
   };

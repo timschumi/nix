@@ -3,7 +3,8 @@
   inputs,
   pkgs,
   ...
-}: {
+}:
+{
   # Relevant settings borrowed from /nixos/modules/installer/cd-dvd/installation-cd-base.nix
   # Build using #nixosConfigurations.<hostname>.config.system.build.isoImage
 
@@ -16,7 +17,7 @@
   isoImage.makeEfiBootable = true;
   isoImage.makeUsbBootable = true;
 
-  swapDevices = inputs.nixpkgs.lib.mkImageMediaOverride [];
+  swapDevices = inputs.nixpkgs.lib.mkImageMediaOverride [ ];
   fileSystems = inputs.nixpkgs.lib.mkImageMediaOverride config.lib.isoFileSystems;
 
   # The live boot ISO did not have the option to set a root password,

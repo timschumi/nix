@@ -2,12 +2,14 @@
   config,
   inputs,
   ...
-}: let
+}:
+let
   inherit (inputs.nixpkgs.lib) mkIf;
   inherit (inputs.nixpkgs.lib.options) mkEnableOption mkOption;
   inherit (inputs.nixpkgs.lib.types) str;
   cfg = config.extra.services.blog;
-in {
+in
+{
   options.extra.services.blog = {
     enable = mkEnableOption "Enable the `blog` service";
     domain = mkOption {

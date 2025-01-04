@@ -1,4 +1,5 @@
-{inputs, ...}: {
+{ inputs, ... }:
+{
   system = "x86_64-linux";
   modules = [
     (inputs.self + "/fragments/comma.nix")
@@ -8,7 +9,8 @@
     (inputs.self + "/fragments/variant-desktop.nix")
 
     (
-      {...}: {
+      { ... }:
+      {
         config = {
           extra = {
             user = {
@@ -29,15 +31,23 @@
         pkgs,
         modulesPath,
         ...
-      }: {
+      }:
+      {
         imports = [
           (modulesPath + "/installer/scan/not-detected.nix")
         ];
 
-        boot.initrd.availableKernelModules = ["xhci_pci" "ahci" "usbhid" "usb_storage" "sd_mod" "sr_mod"];
-        boot.initrd.kernelModules = [];
-        boot.kernelModules = ["kvm-amd"];
-        boot.extraModulePackages = [];
+        boot.initrd.availableKernelModules = [
+          "xhci_pci"
+          "ahci"
+          "usbhid"
+          "usb_storage"
+          "sd_mod"
+          "sr_mod"
+        ];
+        boot.initrd.kernelModules = [ ];
+        boot.kernelModules = [ "kvm-amd" ];
+        boot.extraModulePackages = [ ];
 
         fileSystems."/" = {
           device = "/dev/disk/by-uuid/79b2478c-5fd1-4bc2-860b-587488f2b61d";
@@ -47,10 +57,13 @@
         fileSystems."/boot" = {
           device = "/dev/disk/by-uuid/85A5-F011";
           fsType = "vfat";
-          options = ["fmask=0077" "dmask=0077"];
+          options = [
+            "fmask=0077"
+            "dmask=0077"
+          ];
         };
 
-        swapDevices = [];
+        swapDevices = [ ];
 
         nixpkgs.hostPlatform = lib.mkDefault "x86_64-linux";
         hardware.cpu.amd.updateMicrocode = true;

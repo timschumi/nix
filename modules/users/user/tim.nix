@@ -1,11 +1,14 @@
-{user, ...} @ presets: {
+{ user, ... }@presets:
+{
   config,
   inputs,
   pkgs,
   ...
-}: let
+}:
+let
   inherit (inputs.nixpkgs.lib) mkIf;
-in {
+in
+{
   config = mkIf config.extra.user."${user}".enable {
     home-manager.users."${user}" = {
       home = {
@@ -28,7 +31,7 @@ in {
         enableCompletion = true;
         historySize = -1;
         historyFileSize = -1;
-        historyControl = ["ignoreboth"];
+        historyControl = [ "ignoreboth" ];
       };
 
       programs.neovim = {

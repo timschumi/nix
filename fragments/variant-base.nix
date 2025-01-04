@@ -4,7 +4,8 @@
   lib,
   pkgs,
   ...
-}: {
+}:
+{
   nix = {
     settings = {
       experimental-features = [
@@ -37,7 +38,7 @@
 
   users.users.tim = {
     isNormalUser = true;
-    extraGroups = ["wheel"];
+    extraGroups = [ "wheel" ];
     packages = with pkgs; [
       htop
       silver-searcher

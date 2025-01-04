@@ -1,28 +1,32 @@
-{pkgs, ...}:
+{ pkgs, ... }:
 (pkgs.buildFHSEnv {
   name = "android";
-  targetPkgs = pkgs: (with pkgs; [
-    ccache
-    fontconfig
-    gcc-unwrapped
-    git-lfs
-    git-repo
-    m4
-    python3
-    unzip
-    zip
-  ]);
-  multiPkgs = pkgs: (with pkgs; [
-    freetype
-    glibc
-    glibc.dev
-    libgcc
-    libxcrypt-legacy
-    ncurses5
-    openssl
-    openssl.dev
-    zlib
-  ]);
+  targetPkgs =
+    pkgs:
+    (with pkgs; [
+      ccache
+      fontconfig
+      gcc-unwrapped
+      git-lfs
+      git-repo
+      m4
+      python3
+      unzip
+      zip
+    ]);
+  multiPkgs =
+    pkgs:
+    (with pkgs; [
+      freetype
+      glibc
+      glibc.dev
+      libgcc
+      libxcrypt-legacy
+      ncurses5
+      openssl
+      openssl.dev
+      zlib
+    ]);
   multiArch = true;
   profile = ''
     export LD_LIBRARY_PATH=/usr/lib:/usr/lib32
@@ -34,5 +38,4 @@
     export CCACHE_EXEC="$(which ccache)"
   '';
   runScript = "bash";
-})
-.env
+}).env

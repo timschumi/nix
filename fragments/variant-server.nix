@@ -1,4 +1,5 @@
-{...}: {
+{ ... }:
+{
   imports = [
     ./variant-base.nix
   ];
