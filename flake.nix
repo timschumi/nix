@@ -2,6 +2,23 @@
   description = "NixOS";
 
   inputs = {
+    agenix = {
+      url = "github:ryantm/agenix";
+      inputs = {
+        home-manager.follows = "home-manager";
+        nixpkgs.follows = "nixpkgs";
+        systems.follows = "systems";
+      };
+    };
+
+    agenix-rekey = {
+      url = "github:oddlama/agenix-rekey";
+      inputs = {
+        nixpkgs.follows = "nixpkgs";
+        treefmt-nix.follows = "treefmt-nix";
+      };
+    };
+
     devshell = {
       url = "github:numtide/devshell";
       inputs = {
@@ -64,6 +81,7 @@
 
   outputs =
     {
+      agenix-rekey,
       devshell,
       flake-utils,
       nixpkgs,
@@ -129,7 +147,20 @@
       in
       {
         devShells = flake-utils.lib.eachDefaultSystemMap (
-          system: nixpkgs.lib.mapAttrs (shell: shellpath: loadShell shellpath system) shells
+          system:
+          nixpkgs.lib.mapAttrs (shell: shellpath: loadShell shellpath system) shells
+          // {
+            default =
+              let
+                pkgs = import nixpkgs {
+                  inherit system;
+                  overlays = [ agenix-rekey.overlays.default ];
+                };
+              in
+              pkgs.mkShell {
+                packages = [ pkgs.agenix-rekey ];
+              };
+          }
         );
       }
     )
@@ -156,6 +187,11 @@
     // {
       lib = import ./lib {
         inherit inputs;
+      };
+
+      agenix-rekey = agenix-rekey.configure {
+        userFlake = self;
+        nixosConfigurations = self.nixosConfigurations;
       };
     };
 }

@@ -4,6 +4,9 @@
   modules = [
     (inputs.self + "/fragments/comma.nix")
     (inputs.self + "/fragments/variant-desktop.nix")
+    (import (inputs.self + "/fragments/wireguard-testnet.nix") {
+      ip = "10.130.21.1/24";
+    })
 
     (
       { ... }:
@@ -64,6 +67,7 @@
         boot.loader.efi.canTouchEfiVariables = true;
 
         networking.hostName = "m600";
+        age.rekey.hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGv/5pQ4z++nvLthWCrctYvRZ71smenYgQF/ixJDvPBG";
       }
     )
   ];

@@ -1,6 +1,7 @@
 { ... }:
 {
   imports = [
+    ./secrets
     ./services
     ./users
   ];
