@@ -97,8 +97,7 @@
           enable = true;
           enable32Bit = true;
           extraPackages = with pkgs; [
-            # FIXME: Disabled due to gcc14 build failures (#368672/#369433).
-            #rocmPackages.clr.icd
+            rocmPackages.clr.icd
           ];
           extraPackages32 = with pkgs.pkgsi686Linux; [
           ];
