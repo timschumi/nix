@@ -5,8 +5,6 @@
     (inputs.self + "/fragments/comma.nix")
     (inputs.self + "/fragments/variant-desktop.nix")
 
-    (inputs.nixpkgs + "/nixos/modules/installer/sd-card/sd-image-aarch64.nix")
-
     (
       { ... }:
       {
@@ -45,10 +43,7 @@
         boot.kernelModules = [ ];
         boot.extraModulePackages = [ ];
 
-        sdImage.rootPartitionUUID = "fd106a6e-ef20-4805-994e-2c2c5d0059da";
-        fileSystems."/".device = lib.mkForce "/dev/disk/by-uuid/${config.sdImage.rootPartitionUUID}";
-
-        sdImage.compressImage = false;
+        fileSystems."/".device = lib.mkForce "/dev/disk/by-uuid/fd106a6e-ef20-4805-994e-2c2c5d0059da";
 
         swapDevices = [ ];
 
