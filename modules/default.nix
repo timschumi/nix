@@ -1,7 +1,7 @@
 { ... }:
 {
   imports = [
-    ./adminkeys.nix
+    ./keys.nix
     ./secrets
     ./services
     ./users

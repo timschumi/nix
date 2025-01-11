@@ -21,5 +21,5 @@
   fileSystems = inputs.nixpkgs.lib.mkImageMediaOverride config.lib.isoFileSystems;
 
   # Live media does not have any passwords set, so we can't sudo or log into root by default.
-  users.users.root.openssh.authorizedKeys.keys = config.extra.adminKeys;
+  users.users.root.openssh.authorizedKeys.keys = config.extra.sudoerKeys;
 }
