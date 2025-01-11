@@ -43,13 +43,11 @@ in
   options.extra.user = foldl' (a: b: a // b) { } (
     map (user: {
       "${user}" = {
-        enable = mkEnableOption "Create user ${user}" // {
-          default = config.extra.user."${user}".roles != null;
-        };
+        enable = mkEnableOption "Create user ${user}";
         roles = mkOption {
-          default = null;
+          default = [ ];
           example = roles;
-          type = nullOr (listOf str);
+          type = listOf str;
         };
       };
     }) (attrNames users)

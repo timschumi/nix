@@ -28,6 +28,7 @@
           extra = {
             user = {
               tim = {
+                enable = true;
                 roles = [
                   "android"
                   "dev-dotnet"

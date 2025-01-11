@@ -11,8 +11,7 @@
           extra = {
             user = {
               tim = {
-                roles = [
-                ];
+                enable = true;
               };
             };
           };
