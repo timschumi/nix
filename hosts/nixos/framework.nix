@@ -92,6 +92,7 @@
         boot.loader.efi.canTouchEfiVariables = true;
 
         networking.hostName = "framework";
+        age.rekey.hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIBsX/D+lYIOI+88Cp3RCYJmNhPdJVckb1K5XBC+hFbrX";
 
         hardware.graphics = {
           enable = true;

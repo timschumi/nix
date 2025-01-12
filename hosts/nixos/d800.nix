@@ -65,6 +65,7 @@
         boot.loader.grub.device = "/dev/sda";
 
         networking.hostName = "d800";
+        age.rekey.hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIGm3D08mu5rHgV39OXduViY5OFY8l8m0ZKvgs/Ow2UMX";
       }
     )
   ];

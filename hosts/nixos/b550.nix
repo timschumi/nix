@@ -93,6 +93,7 @@
         boot.loader.efi.canTouchEfiVariables = true;
 
         networking.hostName = "b550";
+        age.rekey.hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIDNQTrNEOn3IXn0kwUk+CzVsaMRzTV/NKaD9Ni6KcK1+";
 
         hardware.graphics = {
           enable = true;

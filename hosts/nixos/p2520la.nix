@@ -69,6 +69,7 @@
         boot.loader.efi.canTouchEfiVariables = true;
 
         networking.hostName = "p2520la";
+        age.rekey.hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAILlVgir2hj+ZfISiwmmSs7JMGgLF0UHxWKHvr0h8wP/I";
       }
     )
   ];
