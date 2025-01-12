@@ -19,8 +19,7 @@ in
       home.packages = with pkgs; [
         blender
         freecad
-        # FIXME: Disabled due to gcc14 build failures (#369571/#369729).
-        #orca-slicer
+        orca-slicer
       ];
     };
   };
