@@ -73,4 +73,6 @@
     gnomeSupport = true; # Required for TLS support
     udevSupport = true; # Required for FUSE support
   };
+
+  programs.kdeconnect.enable = true;
 }
