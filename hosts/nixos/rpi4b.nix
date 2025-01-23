@@ -52,6 +52,7 @@
         boot.loader.generic-extlinux-compatible.enable = true;
 
         networking.hostName = "rpi4b";
+        age.rekey.hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIJqVWq5kKUnpgLdBtAdcTKrvkOlOKeyxPPrfmuyg4JwF";
       }
     )
   ];
