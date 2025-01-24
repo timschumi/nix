@@ -19,7 +19,8 @@ in
       home.packages = with pkgs; [
         blender
         freecad
-        orca-slicer
+        # FIXME: Disabled due to boost version mismatch (#375747).
+        #orca-slicer
       ];
     };
   };
