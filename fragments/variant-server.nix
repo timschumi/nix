@@ -6,7 +6,6 @@
 
   networking = {
     firewall.enable = true;
-    wireless.enable = true;
   };
 
   services.openssh = {
