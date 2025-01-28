@@ -19,6 +19,7 @@
     (inputs.self + "/fragments/steam.nix")
     (inputs.self + "/fragments/thunderbird.nix")
     (inputs.self + "/fragments/variant-desktop.nix")
+    (inputs.self + "/fragments/yubikey.nix")
 
     (
       { ... }:
