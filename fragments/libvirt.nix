@@ -7,10 +7,7 @@
   virtualisation.libvirtd = {
     enable = true;
     qemu = {
-      package = pkgs.qemu_full.override {
-        # FIXME: Required due to ceph build failure (#369777).
-        cephSupport = false;
-      };
+      package = pkgs.qemu_full;
       runAsRoot = true;
       swtpm.enable = true;
       ovmf = {

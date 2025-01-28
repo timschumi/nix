@@ -76,8 +76,7 @@
           enable = true;
           enable32Bit = true;
           extraPackages = with pkgs; [
-            # FIXME: Disabled due to build failure of rocmPackages.llvm.libcxx (#375745).
-            #rocmPackages.clr.icd
+            rocmPackages.clr.icd
           ];
           extraPackages32 = with pkgs.pkgsi686Linux; [
           ];
