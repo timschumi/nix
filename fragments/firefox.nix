@@ -15,7 +15,7 @@
       profiles = {
         main = {
           isDefault = true;
-          extensions = with pkgs.nur.repos.rycee.firefox-addons; [
+          extensions.packages = with pkgs.nur.repos.rycee.firefox-addons; [
             keepassxc-browser
             reddit-enhancement-suite
             sponsorblock
