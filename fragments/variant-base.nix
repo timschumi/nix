@@ -19,6 +19,7 @@
     };
   };
   system.rebuild.enableNg = true;
+  networking.nftables.enable = true;
 
   nixpkgs.config.allowUnfree = true;
   hardware.enableRedistributableFirmware = true;
