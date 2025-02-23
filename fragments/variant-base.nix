@@ -18,6 +18,7 @@
       self.flake = inputs.self;
     };
   };
+  system.rebuild.enableNg = true;
 
   nixpkgs.config.allowUnfree = true;
   hardware.enableRedistributableFirmware = true;
