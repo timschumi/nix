@@ -51,6 +51,13 @@
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIHInF0SYfQJGDv0w09UgbZv+cr1Ot2CsBn2kjFXflIY1"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIFOP8+vneV/IeyBv+JmfT/GaO6RJP9sWayVSrc3paziQ"
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIESy0Dg/XlF9nE27enyHp9l3YHMEmx0eckbnxt4iHThA"
+      "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIO5h6N1XE2wls4aqdzzpnPgIq7XlPwz/xMYxHgu5tduhAAAABHNzaDo="
+    ];
+  };
+
+  users.users.root = {
+    openssh.authorizedKeys.keys = [
+      "sk-ssh-ed25519@openssh.com AAAAGnNrLXNzaC1lZDI1NTE5QG9wZW5zc2guY29tAAAAIO5h6N1XE2wls4aqdzzpnPgIq7XlPwz/xMYxHgu5tduhAAAABHNzaDo="
     ];
   };
 
