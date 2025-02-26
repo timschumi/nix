@@ -25,7 +25,7 @@
         lookAndFeel = "org.kde.breezedark.desktop";
         cursor.theme = "Breeze";
         iconTheme = "breeze";
-        wallpaper = "${pkgs.plasma-workspace-wallpapers}/share/wallpapers/Kay/contents/images_dark/5120x2880.png";
+        wallpaper = "${pkgs.kdePackages.plasma-workspace-wallpapers}/share/wallpapers/Kay/contents/images_dark/5120x2880.png";
       };
 
       powerdevil = {
