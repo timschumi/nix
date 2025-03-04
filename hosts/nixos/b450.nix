@@ -71,12 +71,13 @@
         boot.loader.efi.canTouchEfiVariables = true;
 
         networking.hostName = "b450";
+        age.rekey.hostPubkey = "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIOc+NYiRqwBZLY0HfLSPlIkjlEZomBXtS2iwTi17LhT+";
 
         hardware.graphics = {
           enable = true;
           enable32Bit = true;
           extraPackages = with pkgs; [
-            rocmPackages.clr.icd
+            #rocmPackages.clr.icd
           ];
           extraPackages32 = with pkgs.pkgsi686Linux; [
           ];
